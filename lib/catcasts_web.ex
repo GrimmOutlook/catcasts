@@ -21,7 +21,7 @@ defmodule CatcastsWeb do
     quote do
       use Phoenix.Controller, namespace: CatcastsWeb
       import Plug.Conn
-      import CatcastsWeb.Router.Helpers
+      alias CatcastsWeb.Router.Helpers, as: Routes
       import CatcastsWeb.Gettext
     end
   end
@@ -37,7 +37,7 @@ defmodule CatcastsWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import CatcastsWeb.Router.Helpers
+      alias CatcastsWeb.Router.Helpers, as: Routes
       import CatcastsWeb.ErrorHelpers
       import CatcastsWeb.Gettext
     end

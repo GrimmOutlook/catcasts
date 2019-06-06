@@ -1,7 +1,10 @@
 defmodule CatcastsWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :catcasts
 
-  socket "/socket", CatcastsWeb.UserSocket
+  socket "/socket", CatcastsWeb.UserSocket,
+    websocket: true, # or list of options
+    # longpoll: [check_origin: ...()]
+    longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -24,7 +27,7 @@ defmodule CatcastsWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride
   plug Plug.Head
